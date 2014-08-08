@@ -1,0 +1,6 @@
+{
+	"require": {
+		"shuber/curl": "dev-master"
+	},
+	"minimum-stability": "dev"
+}
