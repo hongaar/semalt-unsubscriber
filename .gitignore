@@ -1,7 +1,4 @@
 vendor/
 composer.lock
-unsubscribed.log
-errors.log
 pids
-unsubscribed.snapshot.log
-unsubscribed.md5.log
+*.log

@@ -30,17 +30,9 @@ while(1) {
 	$lines = getlinecount();
 }
 
-
-// http://stackoverflow.com/a/2162528/938297
 function getlinecount()
 {
+	clearstatcache();
 	$file = "unsubscribed.md5.log";
-	$linecount = 0;
-	$handle = fopen($file, "r");
-	while(!feof($handle)) {
-		$line = fgets($handle);
-		$linecount++;
-	}
-	fclose($handle);
-	return $linecount;
+	return (int) (filesize($file) / 33);
 }
