@@ -1,3 +1,5 @@
 vendor/
 composer.lock
 unsubscribed.log
+errors.log
+pids

@@ -8,7 +8,7 @@ require "vendor/autoload.php";
 
 $curl = new Curl;
 
-// THIS MIGHT NEED SOME TESTING BEFORE YOU START
+// THIS MIGHT CHANGE OVER TIME, TEST BEFORE YOU START
 $currentServer = 13;
 
 $fetchTargetUrl = "http://server" . $currentServer . ".openfrost.com/get_link.php?newagent=1";
@@ -19,11 +19,13 @@ while(1) {
 		$response = $curl->get($fetchTargetUrl);
 	} catch(Exception $e) {
 		echo 'url could not load ' . $fetchTargetUrl;
+		file_put_contents('errors.log', 'error fetching ' . $fetchTargetUrl . PHP_EOL, FILE_APPEND);
 		continue;
 	}
 
 	$target = explode('=', $response->body);
 	if (!isset($target[1]) || empty($target[1])) {
+		file_put_contents('errors.log', 'invalid response body (' . serialize($target) . ")" . PHP_EOL, FILE_APPEND);
 		continue;
 	}
 	$target = $target[1];
@@ -34,6 +36,7 @@ while(1) {
 		$curl->post($unsubscribeUrl, array('domains' => $target));
 	} catch(Exception $e) {
 		echo 'url could not load ' . $unsubscribeUrl;
+		file_put_contents('errors.log', 'error fetching ' . $unsubscribeUrl . PHP_EOL, FILE_APPEND);
 		continue;
 	}
 

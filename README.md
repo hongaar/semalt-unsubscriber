@@ -1,5 +1,5 @@
 run
 
 ```
-php ./unsub.php
+composer install && php ./unsub-start.php
 ```
