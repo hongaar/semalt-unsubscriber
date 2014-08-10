@@ -29,7 +29,7 @@ while(1) {
 	$target = explode('=', $response->body);
 	if (!isset($target[1]) || empty($target[1])) {
 		echo "ERROR response body didn't contain the '=' sign to split the string" . PHP_EOL;
-		file_put_contents('errors.log', 'invalid response body (' . serialize($target) . ")" . PHP_EOL, FILE_APPEND);
+		file_put_contents('errors.log', 'invalid response body' . PHP_EOL, FILE_APPEND);
 		continue;
 	}
 	
@@ -46,6 +46,6 @@ while(1) {
 		continue;
 	}
 
-	echo "unsubscribed " . $target . PHP_EOL;
-	file_put_contents('unsubscribed.log', $target . PHP_EOL, FILE_APPEND);
+	echo "unsubscribed " . md5($target) . PHP_EOL;
+	file_put_contents('unsubscribed.log', md5($target) . PHP_EOL, FILE_APPEND);
 }
