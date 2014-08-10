@@ -1,5 +1,5 @@
 run
 
 ```
-chmod a+x run.php && ./run.php
+chmod u+x run.php && ./run.php
 ```
