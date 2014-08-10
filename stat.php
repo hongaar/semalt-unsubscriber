@@ -1,6 +1,6 @@
 <?php
 
-$countEverySecond = 5;
+$countEverySecond = 1;
 $statEverySecond = 60;
 
 $start = microtime(true);
@@ -34,7 +34,7 @@ while(1) {
 // http://stackoverflow.com/a/2162528/938297
 function getlinecount()
 {
-	$file = "unsubscribed.log";
+	$file = "unsubscribed.md5.log";
 	$linecount = 0;
 	$handle = fopen($file, "r");
 	while(!feof($handle)) {

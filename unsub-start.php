@@ -4,9 +4,8 @@
 
 require "process.class.php";
 
+// override with `php unsub-start.php 50`
 $numThreads = 10;
-
-// override with `php ./unsub-start.php 50`
 if (isset($argv[1]) && is_numeric($argv[1])) {
 	$numThreads = $argv[1];
 }

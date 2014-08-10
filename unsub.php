@@ -11,6 +11,10 @@ $curl = new Curl;
 // THIS MIGHT CHANGE OVER TIME, TEST BEFORE YOU START
 $currentServer = 13;
 
+// WRITE REAL URL EVERY x ITERATIONS AVERAGE FOR MONITORING PURPOSE
+$saveRealUrlStep = 5000;
+$x = 0;
+
 $fetchTargetUrl = "http://server" . $currentServer . ".openfrost.com/get_link.php?newagent=1";
 echo "using server " . $fetchTargetUrl . PHP_EOL;
 
@@ -47,5 +51,9 @@ while(1) {
 	}
 
 	echo "unsubscribed " . md5($target) . PHP_EOL;
-	file_put_contents('unsubscribed.log', md5($target) . PHP_EOL, FILE_APPEND);
+	file_put_contents('unsubscribed.md5.log', md5($target) . PHP_EOL, FILE_APPEND);
+
+	if (rand(0, $saveRealUrlStep) === $saveRealUrlStep) {
+		file_put_contents('unsubscribed.snapshot.log', $target . PHP_EOL, FILE_APPEND);		
+	}
 }
