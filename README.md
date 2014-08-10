@@ -1,5 +1,5 @@
 run
 
 ```
-composer install && php ./unsub-start.php
+chmod a+x run.php && ./run.php
 ```
